@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onPressed: () {},
       style: const ButtonStyle(
         padding: MaterialStatePropertyAll(
-          EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         ),
         backgroundColor: MaterialStatePropertyAll(
           MaterialColor(0xFFCCEEDD, <int, Color>{0: Color(0xFFCCEEDD)}),
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
                   ),
                   backgroundColor: const MaterialColor(
-                      0xFFECFDF5, <int, Color>{0: const Color(0xFFECFDF5)}),
+                      0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
                 ),
                 const SizedBox(
                   width: 16,
