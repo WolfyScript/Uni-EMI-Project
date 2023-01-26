@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -43,64 +43,66 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              children: const [
-                Icon(Icons.calendar_today_rounded),
-                SizedBox(
-                  width: 12,
-                ),
-                Text(
-                  "Anstehend",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            createUpcomingBtn(context, "Gelber Sack", "Freitag", "15.03"),
-            const SizedBox(
-              height: 8,
-            ),
-            createUpcomingBtn(context, "Altpapier", "Montag", "18.03"),
-            const SizedBox(
-              height: 8,
-            ),
-            createUpcomingBtn(context, "Restmüll", "Mittwoch", "27.03"),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              children: const [
-                Icon(Icons.newspaper_rounded),
-                SizedBox(
-                  width: 12,
-                ),
-                Text(
-                  "Aktuelles",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+        child: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            switch(index) {
+              case 0:
+                return Column(
+                children: [
+                  Row(
+                    children: const [
+                      Icon(Icons.calendar_today_rounded),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        "Anstehend",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            NewsSummary(),
-          ],
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  createUpcomingBtn(context, "Gelber Sack", "Freitag", "15.03"),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  createUpcomingBtn(context, "Altpapier", "Montag", "18.03"),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  createUpcomingBtn(context, "Restmüll", "Mittwoch", "27.03"),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.newspaper_rounded),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        "Aktuelles",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                ],
+              );
+              default:
+                return const NewsSummary();
+            }
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
@@ -206,6 +208,8 @@ class NewsSummary extends StatelessWidget {
                 child: Image.asset(
                   'assets/test-image.jpg',
                   fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 200,
                 ),
               ),
             ),
@@ -232,7 +236,7 @@ class NewsSummary extends StatelessWidget {
               height: 8,
             ),
             Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
           ],
         ),
       ),
