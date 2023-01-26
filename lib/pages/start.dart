@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../navbar/nav_sidebar.dart';
 
 class MyHomePage extends StatefulWidget {
+
   const MyHomePage({super.key = const Key("start"), required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -41,64 +40,81 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: const NavSidebar(),
       appBar: AppBar(title: Text(widget.title)),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      body: Center(
         child: ListView.builder(
           itemCount: 20,
           itemBuilder: (context, index) {
-            switch(index) {
+            switch (index) {
               case 0:
-                return Column(
-                children: [
-                  Row(
-                    children: const [
-                      Icon(Icons.calendar_today_rounded),
-                      SizedBox(
-                        width: 12,
+                return Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    top: 16,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: const [
+                          Icon(Icons.calendar_today_rounded),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Text(
+                            "Anstehend",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Anstehend",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      createUpcomingBtn(
+                          context, "Gelber Sack", "Freitag", "15.03"),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      createUpcomingBtn(
+                          context, "Altpapier", "Montag", "18.03"),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      createUpcomingBtn(
+                          context, "Restmüll", "Mittwoch", "27.03"),
+                      const SizedBox(
+                        height: 32,
+                      ),
+                      Row(
+                        children: const [
+                          Icon(Icons.newspaper_rounded),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Text(
+                            "Aktuelles",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  createUpcomingBtn(context, "Gelber Sack", "Freitag", "15.03"),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  createUpcomingBtn(context, "Altpapier", "Montag", "18.03"),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  createUpcomingBtn(context, "Restmüll", "Mittwoch", "27.03"),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  Row(
-                    children: const [
-                      Icon(Icons.newspaper_rounded),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        "Aktuelles",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                ],
-              );
+                );
               default:
-                return const NewsSummary();
+                return const Padding(
+                  padding: EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    bottom: 16,
+                  ),
+                  child: NewsSummary(),
+                );
             }
           },
         ),
@@ -166,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: IconButton(
                 onPressed: () {},
+                visualDensity: VisualDensity.compact,
                 icon: const Icon(Icons.calendar_month_rounded),
                 color: Colors.white,
               ),
@@ -189,7 +206,7 @@ class NewsSummary extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Title",
+              "A precise but not too long title",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -200,7 +217,7 @@ class NewsSummary extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 8,
+              height: 16,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
@@ -220,8 +237,11 @@ class NewsSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
+                    SizedBox(
+                      width: 8,
+                    ),
                     Icon(Icons.import_contacts_rounded),
                     SizedBox(
                       width: 8,
@@ -229,7 +249,11 @@ class NewsSummary extends StatelessWidget {
                     Text("Duration")
                   ],
                 ),
-                const Icon(Icons.more_horiz_rounded)
+                IconButton(
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () {},
+                  icon: const Icon(Icons.more_horiz_rounded),
+                ),
               ],
             ),
             const SizedBox(
