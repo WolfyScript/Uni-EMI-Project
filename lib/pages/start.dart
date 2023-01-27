@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../navbar/nav_sidebar.dart';
 
 class MyHomePage extends StatefulWidget {
-
   const MyHomePage({super.key = const Key("start"), required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -63,7 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             "Anstehend",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -134,44 +135,57 @@ class _MyHomePageState extends State<MyHomePage> {
           MaterialColor(0xFFCCEEDD, <int, Color>{0: Color(0xFFCCEEDD)}),
         ),
       ),
-      child: SizedBox(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Row(
-              children: [
-                Chip(
-                  label: Text(day),
-                  labelStyle: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: MaterialColor(
-                        0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+            Expanded(
+              flex: 1,
+              child: Wrap(
+                direction: Axis.horizontal,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.spaceBetween,
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  Chip(
+                    label: Text(day),
+                    labelStyle: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: MaterialColor(
+                          0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                    ),
+                    backgroundColor: const MaterialColor(
+                        0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
                   ),
-                  backgroundColor: const MaterialColor(
-                      0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Chip(
-                  label: Text(date),
-                  backgroundColor: const MaterialColor(
-                      0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
-                  labelStyle: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: MaterialColor(
-                        0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                  Chip(
+                    label: Text(date),
+                    backgroundColor: const MaterialColor(
+                        0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
+                    labelStyle: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: MaterialColor(
+                          0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                    ),
                   ),
-                ),
-              ],
+
+                ],
+              ),
             ),
-            Text(
-              type,
-              style: const TextStyle(
-                  color: Colors.black87,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
+            Expanded(
+              flex: 1,
+              child: Text(
+                type,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
+            const SizedBox(width: 8,),
             Ink(
               decoration: const ShapeDecoration(
                 shape: CircleBorder(),
