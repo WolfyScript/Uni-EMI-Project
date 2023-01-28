@@ -5,6 +5,7 @@ import 'package:first_flutter_project/pages/map.dart';
 import 'package:first_flutter_project/pages/places.dart';
 import 'package:first_flutter_project/pages/settings.dart';
 import 'package:first_flutter_project/pages/start.dart';
+import 'package:first_flutter_project/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    registerEventTypes();
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
