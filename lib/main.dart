@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MyHomePage(title: "MüllGuard"),
         '/catalog': (context) => const CatalogPage(),
         '/calendar': (context) => const CalendarPage(),
+        '/article': (context) => const CatalogArticlePage(),
         '/map': (context) => const MapPage(),
         '/places': (context) => const PlacesPage(),
         '/settings': (context) => const SettingsPage(),
