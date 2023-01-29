@@ -9,29 +9,6 @@ class EventType {
 
   EventType(this.id, this.label, this.color);
 
-  Widget buildChip(BuildContext context) {
-    BorderSide borderSide = const BorderSide(color: Colors.black45, width: 2,);
-
-    return Chip(
-      padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
-      label: Text(label),
-      visualDensity: VisualDensity.comfortable,
-      backgroundColor: const Color(0xffD9D9D9),
-      avatar: Container(
-        height: double.infinity,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: color,
-          border: Border(
-            bottom: borderSide,
-            right: borderSide,
-            left: borderSide,
-            top: borderSide,
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 final eventTypes = LinkedHashMap<String, EventType>(

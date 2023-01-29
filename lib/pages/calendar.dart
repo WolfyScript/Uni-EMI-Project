@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:first_flutter_project/dummy_data.dart';
 import 'package:first_flutter_project/event.dart';
 import 'package:first_flutter_project/navbar/nav_sidebar.dart';
 import 'package:first_flutter_project/utils.dart';
@@ -19,26 +20,19 @@ class CalendarState extends State<CalendarPage> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _selectedDate = DateTime.utc(2023, 2, 8);
   DateTime _focusedDate = DateTime.utc(2023, 2, 8);
-  final events = LinkedHashMap<DateTime, Event>(
-    equals: (e0, e1) {
-      return isSameDay(e0, e1);
-    },
-    hashCode: (key) {
-      return key.day * 1000000 + key.month * 10000 + key.year;
-    },
-  )..addAll({
-      DateTime.utc(2023, 1, 30): Event("paper"),
-      DateTime.utc(2023, 2, 7): Event("bio"),
-      DateTime.utc(2023, 2, 16): Event("rest"),
-      DateTime.utc(2023, 2, 20): Event("yellow"),
-      DateTime.utc(2023, 2, 23): Event("bulky_waste"),
-    });
+
+  final disabledEvents = HashSet(
+    hashCode: (p0) => p0.hashCode,
+    equals: (p0, p1) => p0 == p1,
+  );
 
   List<Event> _getEvents(DateTime day) {
     Event? event = events[day];
     if (event != null) return [event];
     return [];
   }
+
+  void updateEvents() {}
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +42,16 @@ class CalendarState extends State<CalendarPage> {
         title: const Text("Kalender"),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: TableCalendar(
+                locale: 'de_DE',
                 calendarFormat: _calendarFormat,
                 focusedDay: _focusedDate,
-                firstDay: DateTime.utc(2010),
+                firstDay: DateTime.utc(2022),
                 lastDay: DateTime.utc(2030),
                 eventLoader: (day) {
                   return _getEvents(day);
@@ -81,14 +77,17 @@ class CalendarState extends State<CalendarPage> {
                   markerBuilder: (context, day, events) {
                     if (events.isEmpty) return null;
                     Event event = events.first;
+                    if (disabledEvents.contains(event.type.id))
+                      return Container();
                     if (day != _selectedDate) {
                       return Center(
                         child: Container(
                           margin: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(8)),
-                            color: MaterialColor(
-                                event.type.color.value, const {}),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            color:
+                                MaterialColor(event.type.color.value, const {}),
                           ),
                           child: Center(
                             child: Text(day.day.toString()),
@@ -98,11 +97,14 @@ class CalendarState extends State<CalendarPage> {
                     } else {
                       return Center(
                         child: Container(
-                          margin: const EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 4),
+                          margin: const EdgeInsets.only(
+                              top: 40, left: 16, right: 16, bottom: 1),
                           decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(8)),
-                            color: MaterialColor(
-                                event.type.color.value, const {}),
+                            shape: BoxShape.circle,
+                            //borderRadius: const BorderRadius.all(Radius.circular(8)),
+                            border: Border.all(color: Colors.black87, width: 1),
+                            color:
+                                MaterialColor(event.type.color.value, const {}),
                           ),
                         ),
                       );
@@ -112,7 +114,7 @@ class CalendarState extends State<CalendarPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {},
@@ -128,12 +130,42 @@ class CalendarState extends State<CalendarPage> {
                 spacing: 64,
                 runSpacing: 8,
                 alignment: WrapAlignment.spaceBetween,
-                children:
-                    eventTypes.values.map((e) => e.buildChip(context)).toList(),
+                children: eventTypes.values
+                    .map((e) => buildChip(e, context))
+                    .toList(),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildChip(EventType eventType, BuildContext context) {
+    BorderSide borderSide = const BorderSide(
+      color: Colors.black45,
+      width: 2,
+    );
+
+    return InputChip(
+      padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
+      label: Text(eventType.label),
+      visualDensity: VisualDensity.comfortable,
+      backgroundColor: const Color(0xffD9D9D9),
+      selected: !disabledEvents.contains(eventType.id),
+      onSelected: (value) {
+        setState(() {
+          if (value) {
+            disabledEvents.remove(eventType.id);
+          } else {
+            disabledEvents.add(eventType.id);
+          }
+        });
+      },
+      avatar: CircleAvatar(
+        backgroundColor: eventType.color,
+        foregroundColor: eventType.color,
+        child: Container(),
       ),
     );
   }
