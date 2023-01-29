@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/navbar/page_button.dart';
+import 'package:uni_emi_muell_guard/navbar/page_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +18,7 @@ class NavSidebar extends StatelessWidget {
       backgroundColor:
           const MaterialColor(0xFFCED8D0, <int, Color>{0: Color(0xFFCED8D0)}),
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 32, bottom: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,

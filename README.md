@@ -1,4 +1,4 @@
-# first_flutter_project
+# uni_emi_muell_guard
 
 A new Flutter project.
 

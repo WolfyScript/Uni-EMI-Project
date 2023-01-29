@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/article.dart';
+import 'package:uni_emi_muell_guard/article.dart';
 
 class NewsArticle extends Article {
 

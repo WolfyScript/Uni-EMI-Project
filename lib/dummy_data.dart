@@ -1,8 +1,8 @@
 import 'dart:collection';
 
-import 'package:first_flutter_project/catalog_article.dart';
-import 'package:first_flutter_project/event.dart';
-import 'package:first_flutter_project/news_article.dart';
+import 'package:uni_emi_muell_guard/catalog_article.dart';
+import 'package:uni_emi_muell_guard/event.dart';
+import 'package:uni_emi_muell_guard/news_article.dart';
 import 'package:flutter/widgets.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,9 +16,9 @@ final events = LinkedHashMap<DateTime, Event>(
 )..addAll({
     DateTime.utc(2023, 1, 30): Event("paper"),
     DateTime.utc(2023, 2, 7): Event("bio"),
-    DateTime.utc(2023, 2, 16): Event("rest"),
-    DateTime.utc(2023, 2, 20): Event("yellow"),
-    DateTime.utc(2023, 2, 23): Event("bulky_waste"),
+    DateTime.utc(2023, 2, 16): Event("yellow"),
+    DateTime.utc(2023, 2, 20): Event("bulky_waste"),
+    DateTime.utc(2023, 2, 23): Event("rest"),
   });
 
 final catalogArticles = [

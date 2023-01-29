@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/navbar/nav_sidebar.dart';
+import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {

@@ -1,10 +1,10 @@
-import 'package:first_flutter_project/pages/calendar.dart';
-import 'package:first_flutter_project/pages/catalog.dart';
-import 'package:first_flutter_project/pages/map.dart';
-import 'package:first_flutter_project/pages/places.dart';
-import 'package:first_flutter_project/pages/settings.dart';
-import 'package:first_flutter_project/pages/start.dart';
-import 'package:first_flutter_project/utils.dart';
+import 'package:uni_emi_muell_guard/pages/calendar.dart';
+import 'package:uni_emi_muell_guard/pages/catalog.dart';
+import 'package:uni_emi_muell_guard/pages/map.dart';
+import 'package:uni_emi_muell_guard/pages/places.dart';
+import 'package:uni_emi_muell_guard/pages/settings.dart';
+import 'package:uni_emi_muell_guard/pages/start.dart';
+import 'package:uni_emi_muell_guard/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 

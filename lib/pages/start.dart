@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:first_flutter_project/dummy_data.dart';
+import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 16,
+                    top: 32,
                   ),
                   child: Column(
                     children: [
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 32,
                       ),
                       ...events.entries.take(3)
                           .map(
@@ -147,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Wrap(
                   direction: Axis.horizontal,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -204,7 +204,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/calendar');
+                  },
                   visualDensity: VisualDensity.compact,
                   icon: const Icon(Icons.calendar_month_rounded),
                   color: Colors.white,
@@ -262,15 +264,13 @@ Widget createNewsArticle(BuildContext context, NewsArticle article) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      const Icon(
-                        Icons.import_contacts_rounded,
-                        color: Color(0xff64748B),
-                      ),
-                      const SizedBox(
-                        width: 8,
+                      const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(
+                          Icons.import_contacts_rounded,
+                          semanticLabel: 'Read Duration',
+                          color: Color(0xff64748B),
+                        ),
                       ),
                       Text(
                         "${article.readTime.inMinutes.toString()} Minuten",
@@ -281,7 +281,10 @@ Widget createNewsArticle(BuildContext context, NewsArticle article) {
                     ],
                   ),
                   IconButton(
-                    visualDensity: VisualDensity.compact,
+                    visualDensity: VisualDensity.comfortable,
+                    padding: EdgeInsets.zero,
+                    mouseCursor: MaterialStateMouseCursor.clickable,
+                    enableFeedback: true,
                     color: const Color(0xff64748B),
                     onPressed: () {},
                     icon: const Icon(Icons.more_horiz_rounded),

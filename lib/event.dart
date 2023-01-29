@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/utils.dart';
+import 'package:uni_emi_muell_guard/utils.dart';
 
 class Event {
 

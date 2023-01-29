@@ -1,9 +1,9 @@
 import 'dart:collection';
 
-import 'package:first_flutter_project/dummy_data.dart';
-import 'package:first_flutter_project/event.dart';
-import 'package:first_flutter_project/navbar/nav_sidebar.dart';
-import 'package:first_flutter_project/utils.dart';
+import 'package:uni_emi_muell_guard/dummy_data.dart';
+import 'package:uni_emi_muell_guard/event.dart';
+import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
+import 'package:uni_emi_muell_guard/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 

@@ -1,6 +1,6 @@
-import 'package:first_flutter_project/catalog_article.dart';
-import 'package:first_flutter_project/dummy_data.dart';
-import 'package:first_flutter_project/navbar/nav_sidebar.dart';
+import 'package:uni_emi_muell_guard/catalog_article.dart';
+import 'package:uni_emi_muell_guard/dummy_data.dart';
+import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;

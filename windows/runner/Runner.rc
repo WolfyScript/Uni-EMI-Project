@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.wolfyscript" "\0"
-            VALUE "FileDescription", "first_flutter_project" "\0"
+            VALUE "FileDescription", "uni_emi_muell_guard" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "first_flutter_project" "\0"
+            VALUE "InternalName", "uni_emi_muell_guard" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.wolfyscript. All rights reserved." "\0"
-            VALUE "OriginalFilename", "first_flutter_project.exe" "\0"
-            VALUE "ProductName", "first_flutter_project" "\0"
+            VALUE "OriginalFilename", "uni_emi_muell_guard.exe" "\0"
+            VALUE "ProductName", "uni_emi_muell_guard" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
