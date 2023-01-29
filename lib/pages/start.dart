@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:first_flutter_project/dummy_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
+import 'package:markdown/markdown.dart' as md;
 
 import '../navbar/nav_sidebar.dart';
+import '../news_article.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key = const Key("start"), required this.title});
@@ -45,7 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: ListView.builder(
-          itemCount: 20,
+          itemCount: 3,
+          padding: const EdgeInsets.only(bottom: 16),
           itemBuilder: (context, index) {
             switch (index) {
               case 0:
@@ -75,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(
                         height: 16,
                       ),
-                      ...events.entries
+                      ...events.entries.take(3)
                           .map(
                             (e) => createUpcomingBtn(
                               context,
@@ -84,11 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               DateFormat("dd.MM").format(e.key),
                             ),
                           )
-                          .toList()
-                          .sublist(
-                            0,
-                            min(events.length, 3),
-                          ),
+                          .toList(),
                       const SizedBox(
                         height: 16,
                       ),
@@ -114,14 +114,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               default:
-                return const Padding(
-                  padding: EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    bottom: 16,
-                  ),
-                  child: NewsSummary(),
-                );
+                if (newsArticles.length > index - 1) {
+                  NewsArticle article = newsArticles.elementAt(index - 1);
+                  return createNewsArticle(context, article);
+                }
+                return null;
             }
           },
         ),
@@ -221,76 +218,96 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class NewsSummary extends StatelessWidget {
-  const NewsSummary({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "A precise but not too long title",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: MaterialColor(
-                  0xFF4F7555,
-                  <int, Color>{0: Color(0xFF4F7555)},
+Widget createNewsArticle(BuildContext context, NewsArticle article) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
+    child: Card(
+      color: const Color.fromRGBO(206, 216, 208, 0.14),
+      shadowColor: const Color.fromRGBO(206, 216, 208, 0.1),
+      child: InkWell(
+        onTap: () => print("Clicked"),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                article.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: MaterialColor(
+                    0xFF4F7555,
+                    <int, Color>{0: Color(0xFF4F7555)},
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: SizedBox(
-                child: Image.asset(
-                  'assets/test-image.jpg',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              const SizedBox(
+                height: 16,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: SizedBox(
                   height: 200,
+                  width: double.infinity,
+                  child: article.image,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    SizedBox(
-                      width: 8,
+              const SizedBox(
+                height: 8,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      const Icon(
+                        Icons.import_contacts_rounded,
+                        color: Color(0xff64748B),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "${article.readTime.inMinutes.toString()} Minuten",
+                        style: const TextStyle(
+                          color: Color(0xff64748B),
+                        ),
+                      )
+                    ],
+                  ),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    color: const Color(0xff64748B),
+                    onPressed: () {},
+                    icon: const Icon(Icons.more_horiz_rounded),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: SafeArea(
+                  child: MarkdownBody(
+                    extensionSet: md.ExtensionSet(
+                      md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+                      [md.EmojiSyntax(), ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes]
                     ),
-                    Icon(Icons.import_contacts_rounded),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text("Duration")
-                  ],
+                    selectable: true,
+                    data: article.summary,
+                  ),
                 ),
-                IconButton(
-                  visualDensity: VisualDensity.compact,
-                  onPressed: () {},
-                  icon: const Icon(Icons.more_horiz_rounded),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
-          ],
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
