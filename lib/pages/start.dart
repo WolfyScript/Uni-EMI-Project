@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:first_flutter_project/dummy_data.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../navbar/nav_sidebar.dart';
 
@@ -71,20 +75,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(
                         height: 16,
                       ),
-                      createUpcomingBtn(
-                          context, "Gelber Sack", "Freitag", "15.03"),
+                      ...events.entries
+                          .map(
+                            (e) => createUpcomingBtn(
+                              context,
+                              e.value.type.label,
+                              DateFormat.EEEE('de_DE').format(e.key),
+                              DateFormat("dd.MM").format(e.key),
+                            ),
+                          )
+                          .toList()
+                          .sublist(
+                            0,
+                            min(events.length, 3),
+                          ),
                       const SizedBox(
-                        height: 8,
-                      ),
-                      createUpcomingBtn(
-                          context, "Altpapier", "Montag", "18.03"),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      createUpcomingBtn(
-                          context, "Restmüll", "Mittwoch", "27.03"),
-                      const SizedBox(
-                        height: 32,
+                        height: 16,
                       ),
                       Row(
                         children: const [
@@ -125,83 +131,90 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget createUpcomingBtn(
       BuildContext context, String type, String day, String date) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: const ButtonStyle(
-        padding: MaterialStatePropertyAll(
-          EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    return Container(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: const ButtonStyle(
+          padding: MaterialStatePropertyAll(
+            EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          ),
+          backgroundColor: MaterialStatePropertyAll(
+            MaterialColor(0xFFCCEEDD, <int, Color>{0: Color(0xFFCCEEDD)}),
+          ),
         ),
-        backgroundColor: MaterialStatePropertyAll(
-          MaterialColor(0xFFCCEEDD, <int, Color>{0: Color(0xFFCCEEDD)}),
-        ),
-      ),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Wrap(
-                direction: Axis.horizontal,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.spaceBetween,
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  Chip(
-                    label: Text(day),
-                    labelStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: MaterialColor(
-                          0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: Wrap(
+                  direction: Axis.horizontal,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  alignment: WrapAlignment.start,
+                  spacing: 4,
+                  runSpacing: 4,
+                  children: [
+                    Chip(
+                      label: Text(day),
+                      labelStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: MaterialColor(
+                            0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                      ),
+                      backgroundColor: const MaterialColor(
+                          0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
                     ),
-                    backgroundColor: const MaterialColor(
-                        0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
-                  ),
-                  Chip(
-                    label: Text(date),
-                    backgroundColor: const MaterialColor(
-                        0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
-                    labelStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: MaterialColor(
-                          0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                    Chip(
+                      label: Text(date),
+                      backgroundColor: const MaterialColor(
+                          0xFFECFDF5, <int, Color>{0: Color(0xFFECFDF5)}),
+                      labelStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: MaterialColor(
+                            0xFF4F7555, <int, Color>{0: Color(0xFF4F7555)}),
+                      ),
                     ),
-                  ),
-
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                type,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(width: 8,),
-            Ink(
-              decoration: const ShapeDecoration(
-                shape: CircleBorder(),
-                color: MaterialColor(
-                  0xFF4F7555,
-                  <int, Color>{0: Color(0xFF4F7555)},
+                  ],
                 ),
               ),
-              child: IconButton(
-                onPressed: () {},
-                visualDensity: VisualDensity.compact,
-                icon: const Icon(Icons.calendar_month_rounded),
-                color: Colors.white,
+              const SizedBox(
+                width: 16,
               ),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: Text(
+                  type,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Ink(
+                decoration: const ShapeDecoration(
+                  shape: CircleBorder(),
+                  color: MaterialColor(
+                    0xFF4F7555,
+                    <int, Color>{0: Color(0xFF4F7555)},
+                  ),
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  visualDensity: VisualDensity.compact,
+                  icon: const Icon(Icons.calendar_month_rounded),
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
