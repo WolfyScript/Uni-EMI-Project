@@ -1,4 +1,3 @@
-import 'package:first_flutter_project/navbar/nav_sidebar.dart';
 import 'package:first_flutter_project/pages/calendar.dart';
 import 'package:first_flutter_project/pages/catalog.dart';
 import 'package:first_flutter_project/pages/map.dart';
@@ -7,6 +6,7 @@ import 'package:first_flutter_project/pages/settings.dart';
 import 'package:first_flutter_project/pages/start.dart';
 import 'package:first_flutter_project/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     registerEventTypes();
+    initializeDateFormatting('de_DE').then((value) => print("Loaded Locale"));
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
@@ -59,5 +60,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
