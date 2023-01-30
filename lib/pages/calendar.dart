@@ -21,11 +21,6 @@ class CalendarState extends State<CalendarPage> {
   DateTime _selectedDate = DateTime.utc(2023, 2, 8);
   DateTime _focusedDate = DateTime.utc(2023, 2, 8);
 
-  final disabledEvents = HashSet(
-    hashCode: (p0) => p0.hashCode,
-    equals: (p0, p1) => p0 == p1,
-  );
-
   List<Event> _getEvents(DateTime day) {
     Event? event = events[day];
     if (event != null) return [event];
@@ -77,8 +72,9 @@ class CalendarState extends State<CalendarPage> {
                   markerBuilder: (context, day, events) {
                     if (events.isEmpty) return null;
                     Event event = events.first;
-                    if (disabledEvents.contains(event.type.id))
+                    if (disabledEventTypes.contains(event.type)) {
                       return Container();
+                    }
                     if (day != _selectedDate) {
                       return Center(
                         child: Container(
@@ -152,13 +148,13 @@ class CalendarState extends State<CalendarPage> {
       label: Text(eventType.label),
       visualDensity: VisualDensity.comfortable,
       backgroundColor: const Color(0xffD9D9D9),
-      selected: !disabledEvents.contains(eventType.id),
+      selected: !disabledEventTypes.contains(eventType),
       onSelected: (value) {
         setState(() {
           if (value) {
-            disabledEvents.remove(eventType.id);
+            disabledEventTypes.remove(eventType);
           } else {
-            disabledEvents.add(eventType.id);
+            disabledEventTypes.add(eventType);
           }
         });
       },

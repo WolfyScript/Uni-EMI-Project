@@ -279,7 +279,7 @@ class CatalogArticlePage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
                     child: MarkdownBody(
                       styleSheet: customMarkdownStyleSheet,
                       extensionSet: md.ExtensionSet(

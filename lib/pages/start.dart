@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 import 'package:markdown/markdown.dart' as md;
+import 'package:uni_emi_muell_guard/utils.dart';
 
 import '../navbar/nav_sidebar.dart';
 import '../news_article.dart';
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(
                         height: 32,
                       ),
-                      ...events.entries.take(3)
+                      ...events.entries.where((element) => !disabledEventTypes.contains(element.value.type)).take(3)
                           .map(
                             (e) => createUpcomingBtn(
                               context,

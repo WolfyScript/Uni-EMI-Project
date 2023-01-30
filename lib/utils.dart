@@ -12,6 +12,11 @@ class EventType {
 
 }
 
+final disabledEventTypes = HashSet<EventType>(
+  hashCode: (p0) => p0.id.hashCode,
+  equals: (p0, p1) => p0.id == p1.id,
+);
+
 final eventTypes = LinkedHashMap<String, EventType>(
   hashCode: (key) {
     return key.hashCode;

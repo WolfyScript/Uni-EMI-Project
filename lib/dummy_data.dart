@@ -26,7 +26,7 @@ final catalogArticles = [
     title: "Müll richtig trennen. So gehts!",
     image: Image.asset('assets/abfallsortierung.jpg', fit: BoxFit.cover),
     summary:
-        "Hier erfahren Sie, wie Verpackungen richtig getrennt werden und was unbedingt als Sondermüll entsorgt werden muss.",
+        "**Hier erfahren Sie, wie Verpackungen richtig getrennt werden und was unbedingt als Sondermüll entsorgt werden muss.**",
     content: """
 Ob graue Tonne, gelber Sack oder Wertstofftonne, Glascontainer oder Komposthaufen - Abfalltrennen gehört längst zum Haushaltsalltag.   
 Doch die bunte Tonnenvielfalt macht das Trennen nicht unbedingt leichter und beim Sortieren kommen immer wieder Fragen auf: Dürfen Joghurtbecher nur sauber gespült in die Wertstoffsammlung wandern?    
@@ -66,7 +66,7 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-t
     title: "Altbatterien & Akkus",
     image: Image.asset('assets/batteries.webp', fit: BoxFit.cover),
     summary:
-        "Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: \"Nach Gebrauch zurück\".",
+        "**Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: \"Nach Gebrauch zurück\".**",
     content: """
 # Heading 1  
 ## Heading 2
