@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   for (var entry in events.entries) {
                     for (var event in entry.value) {
                       if (upcomingEvents.length >= 3) break;
-                      if (!disabledEventTypes.contains(event.type)) {
+                      if (!hiddenEventTypes.contains(event.type)) {
                         upcomingEvents.putIfAbsent(event, () => entry.key);
                       }
                     }

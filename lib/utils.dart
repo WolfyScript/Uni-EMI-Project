@@ -26,7 +26,7 @@ enum BaseEventType {
 
 }
 
-final disabledEventTypes = HashSet<EventType>(
+final hiddenEventTypes = HashSet<EventType>(
   hashCode: (p0) => p0.id.hashCode,
   equals: (p0, p1) => p0.id == p1.id,
 );

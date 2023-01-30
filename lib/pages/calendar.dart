@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:uni_emi_muell_guard/event.dart';
@@ -118,7 +119,7 @@ class CalendarState extends State<CalendarPage> {
                     if (events.isEmpty) return null;
                     List<Event> enabledEvents = events
                         .where((element) =>
-                            !disabledEventTypes.contains(element.type))
+                            !hiddenEventTypes.contains(element.type))
                         .toList();
 
                     if (enabledEvents.isEmpty) {
@@ -211,7 +212,115 @@ class CalendarState extends State<CalendarPage> {
                     visualDensity: VisualDensity.comfortable,
                     label: const Text("Hinzufügen",
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    onPressed: () {},
+                    onPressed: () {
+                      showGeneralDialog(
+                        context: context,
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return Dialog(
+                            backgroundColor: Colors.white,
+                            insetPadding: EdgeInsets.symmetric(
+                                vertical: 24, horizontal: 40),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
+                            child: SingleChildScrollView(
+                              child: Container(
+                                padding: const EdgeInsets.all(16),
+                                constraints: BoxConstraints.expand(
+                                    width: 300, height: 400),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Abholart Hinzufügen",
+                                      style: TextStyle(
+                                        color: MaterialColor(
+                                            Theme.of(context)
+                                                .primaryColor
+                                                .value,
+                                            const {}),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    /*
+                                    SlidePicker(
+                                      pickerColor: Colors.green,
+                                      enableAlpha: false,
+                                      labelTypes: const [],
+                                      onColorChanged: (value) {},
+                                    )
+                                     */
+                                    Expanded(
+                                      flex: 1,
+                                      child: SizedBox(
+                                        width: double.infinity,
+                                        child: MaterialPicker(
+                                          pickerColor: Colors.white,
+                                          portraitOnly: true,
+                                          enableLabel: true,
+                                          onColorChanged: (value) {},
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    const TextField(
+                                      decoration:
+                                          InputDecoration(hintText: "Name"),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        OutlinedButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text("Abbrechen")),
+                                        ElevatedButton(
+                                            onPressed: () {},
+                                            child: const Text("Hinzufügen"))
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                      /*
+                      showCupertinoModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Center(
+                            child: Container(
+                              padding: EdgeInsets.all(16),
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: [
+                                  ElevatedButton(onPressed: () {
+                                    showDialog(context: context, builder: (context) {
+                                      return Container(child: Text("TEst Dialog"),);
+                                    },);
+                                  }, child: Text("Test"))
+                                ],
+                              )
+                            ),
+                          );
+                        },
+                      );
+
+                       */
+                    },
                     avatar: const Icon(Icons.add_circle_rounded),
                   )
                 ],
@@ -238,13 +347,13 @@ class CalendarState extends State<CalendarPage> {
       iconTheme: const IconThemeData(size: 18, color: Color(0xffD9D9D9)),
       visualDensity: VisualDensity.comfortable,
       backgroundColor: const Color(0xffD9D9D9),
-      selected: !disabledEventTypes.contains(eventType),
+      selected: !hiddenEventTypes.contains(eventType),
       onSelected: (value) {
         setState(() {
           if (value) {
-            disabledEventTypes.remove(eventType);
+            hiddenEventTypes.remove(eventType);
           } else {
-            disabledEventTypes.add(eventType);
+            hiddenEventTypes.add(eventType);
           }
         });
       },
