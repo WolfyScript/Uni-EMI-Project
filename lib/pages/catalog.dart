@@ -6,6 +6,8 @@ import 'package:uni_emi_muell_guard/catalog_article.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
 
+import '../utils.dart';
+
 class CatalogArticleArguments {
   final CatalogArticle article;
 
@@ -112,7 +114,7 @@ class CatalogPage extends StatelessWidget {
                           width: 8,
                         ),
                         Text(
-                          "${DateFormat("dd.MM.yy").format(article.editDate == null ? article.creationDate : article.editDate!)}",
+                          DateFormat("dd.MM.yy").format(article.editDate == null ? article.creationDate : article.editDate!),
                           style: const TextStyle(
                             color: Color(0xff64748B),
                           ),
@@ -174,7 +176,7 @@ class CatalogPage extends StatelessWidget {
 class CatalogArticlePage extends StatelessWidget {
   const CatalogArticlePage({super.key});
 
-  static const routeName = '/article';
+  static const routeName = '/catalog_article';
 
   @override
   Widget build(BuildContext context) {
@@ -266,15 +268,7 @@ class CatalogArticlePage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16.0),
                     child: MarkdownBody(
-                      styleSheet: MarkdownStyleSheet(
-                        textScaleFactor: 1.04,
-                        h1Padding: const EdgeInsets.symmetric(vertical: 16),
-                        h2Padding: const EdgeInsets.symmetric(vertical: 16),
-                        h3Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h4Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h5Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h6Padding: const EdgeInsets.symmetric(vertical: 4),
-                      ),
+                      styleSheet: customMarkdownStyleSheet,
                       extensionSet: md.ExtensionSet(
                           md.ExtensionSet.gitHubFlavored.blockSyntaxes, [
                         md.EmojiSyntax(),
@@ -287,15 +281,7 @@ class CatalogArticlePage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16.0),
                     child: MarkdownBody(
-                      styleSheet: MarkdownStyleSheet(
-                        textScaleFactor: 1.04,
-                        h1Padding: const EdgeInsets.symmetric(vertical: 16),
-                        h2Padding: const EdgeInsets.symmetric(vertical: 16),
-                        h3Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h4Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h5Padding: const EdgeInsets.symmetric(vertical: 6),
-                        h6Padding: const EdgeInsets.symmetric(vertical: 4),
-                      ),
+                      styleSheet: customMarkdownStyleSheet,
                       extensionSet: md.ExtensionSet(
                           md.ExtensionSet.gitHubFlavored.blockSyntaxes, [
                         md.EmojiSyntax(),

@@ -43,10 +43,9 @@ Inzwischen konkurrieren diverse duale Systeme, die mit unterschiedlichen Kennzei
 Also: Selbst wenn auf der Hülle künftig kein Zeichen mehr prangt, sollten Verbraucher ihren Verpackungsmüll immer über die "gelbe Tonne" oder den "gelben Sack" entsorgen.  
 Leere Verpackungen müssen nicht gespült werden, löffelrein reicht aus. Zu den Verpackungen zählen auch die so genannten Serviceverpackungen, die direkt im Handel befüllt werden.
 Darunter fallen Coffee to go-Becher, die Boxen für das take-away-Essen, Folien und Einwickelpapier aus der Metzgerei oder vom Käsestand.  
-    
-### Achtung: 
-**Sind die Verpackungen stark mit Essenresten verschmutzt, dann bitte über die Restmülltonne entsorgen.**  
 
+#### Achtung: 
+**Sind die Verpackungen stark mit Essenresten verschmutzt, dann bitte über die Restmülltonne entsorgen.**  
 
 Verpackungen aus Papier oder Glas werden über Papiertonnen/-container oder Glascontainer gesammelt, siehe weiter unten.  
 Seit dem 1.1.2019 gilt das Verpackungsgesetz.  
@@ -68,7 +67,14 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-t
     image: Image.asset('assets/batteries.webp', fit: BoxFit.cover),
     summary:
         "Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: \"Nach Gebrauch zurück\".",
-    content: "",
+    content: """
+# Heading 1  
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+""",
     creationDate: DateTime.utc(2023, 2, 10),
     readTime: const Duration(minutes: 8),
   ),
