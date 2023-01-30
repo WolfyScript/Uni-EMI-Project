@@ -26,8 +26,8 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
-"index.html": "3f697f9f5ce6933016812bf395fef024",
-"/": "3f697f9f5ce6933016812bf395fef024"
+"index.html": "591db6b96cb94cdfe33cbda028a938bc",
+"/": "591db6b96cb94cdfe33cbda028a938bc"
 };
 
 // The application shell files that are downloaded before a service worker can
