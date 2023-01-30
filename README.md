@@ -1,10 +1,8 @@
-# uni_emi_muell_guard
+# Uni EMI Project Demo
 
-A new Flutter project.
+Demo App, created using Flutter, for a University EMI ("Einführung in die Medieninformatik") project.  
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## Getting Started with Flutter
 
 A few resources to get you started if this is your first Flutter project:
 
