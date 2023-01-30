@@ -29,30 +29,38 @@ final catalogArticles = [
         "Hier erfahren Sie, wie Verpackungen richtig getrennt werden und was unbedingt als Sondermüll entsorgt werden muss.",
     content: """
 Ob graue Tonne, gelber Sack oder Wertstofftonne, Glascontainer oder Komposthaufen - Abfalltrennen gehört längst zum Haushaltsalltag.   
-Doch die bunte Tonnenvielfalt macht das Trennen nicht unbedingt leichter und beim Sortieren kommen immer wieder Fragen auf: Dürfen Joghurtbecher nur sauber gespült in die Wertstoffsammlung wandern?   
+Doch die bunte Tonnenvielfalt macht das Trennen nicht unbedingt leichter und beim Sortieren kommen immer wieder Fragen auf: Dürfen Joghurtbecher nur sauber gespült in die Wertstoffsammlung wandern?    
 Können Flaschen samt Deckel im Altglascontainer landen? Sollen auch Verpackungen ohne grünen Punkt in den gelben Sack?   
 Kann ich die Bioplastiktüte kompostieren? Wir geben Antworten.  
 
 # Gelber Sack / Gelbe Tonne
 
-(Haben Sie eine Wertstofftonne, lesen Sie bitte den nächsten Block)
-Hier hinein gehören Verpackungen aus Kunststoff, Weißblech und Aluminium - beispielsweise Folien, Tuben, Konservendosen oder Plastiktüten - sowie die so genannten Verbundverpackungen (etwa Getränkekartons).
-Seit 2009 ist es nicht mehr ausschlaggebend, ob der Grüne Punkt auf den Verpackungen ist oder nicht. Denn alle Hersteller müssen sich einem dualen System angeschlossen haben, das die gebrauchten Verpackungen dem Recycling zuführt. Inzwischen konkurrieren diverse duale Systeme, die mit unterschiedlichen Kennzeichen arbeiten. Also: Selbst wenn auf der Hülle künftig kein Zeichen mehr prangt, sollten Verbraucher ihren Verpackungsmüll immer über die "gelbe Tonne" oder den "gelben Sack" entsorgen.
-Leere Verpackungen müssen nicht gespült werden, löffelrein reicht aus. Zu den Verpackungen zählen auch die so genannten Serviceverpackungen, die direkt im Handel befüllt werden. Darunter fallen Coffee to go-Becher, die Boxen für das take-away-Essen, Folien und Einwickelpapier aus der Metzgerei oder vom Käsestand.
+(Haben Sie eine Wertstofftonne, lesen Sie bitte den nächsten Block)  
+Hier hinein gehören Verpackungen aus Kunststoff, Weißblech und Aluminium - beispielsweise Folien, Tuben, Konservendosen oder Plastiktüten - sowie die so genannten Verbundverpackungen (etwa Getränkekartons).  
+Seit 2009 ist es nicht mehr ausschlaggebend, ob der Grüne Punkt auf den Verpackungen ist oder nicht. Denn alle Hersteller müssen sich einem dualen System angeschlossen haben, das die gebrauchten Verpackungen dem Recycling zuführt.  
+Inzwischen konkurrieren diverse duale Systeme, die mit unterschiedlichen Kennzeichen arbeiten.  
+
+Also: Selbst wenn auf der Hülle künftig kein Zeichen mehr prangt, sollten Verbraucher ihren Verpackungsmüll immer über die "gelbe Tonne" oder den "gelben Sack" entsorgen.  
+Leere Verpackungen müssen nicht gespült werden, löffelrein reicht aus. Zu den Verpackungen zählen auch die so genannten Serviceverpackungen, die direkt im Handel befüllt werden.
+Darunter fallen Coffee to go-Becher, die Boxen für das take-away-Essen, Folien und Einwickelpapier aus der Metzgerei oder vom Käsestand.  
     
-Achtung: 
-Sind die Verpackungen stark mit Essenresten verschmutzt, dann bitte über die Restmülltonne entsorgen.
-    
-Verpackungen aus Papier oder Glas werden über Papiertonnen/-container oder Glascontainer gesammelt, siehe weiter unten.
-Seit dem 1.1.2019 gilt das Verpackungsgesetz. 
-Es soll dazu beitragen, dass mehr Verpackungen - insbesondere aus Kunststoff - recycelt werden und Hersteller Verpackungen produzieren, die tatsächlich verwertbar sind. 
-Ob so weniger Verpackungsmüll anfällt und Verbraucher dadurch finanziell entlastet werden, bleibt abzuwarten.
+### Achtung: 
+**Sind die Verpackungen stark mit Essenresten verschmutzt, dann bitte über die Restmülltonne entsorgen.**  
+
+
+Verpackungen aus Papier oder Glas werden über Papiertonnen/-container oder Glascontainer gesammelt, siehe weiter unten.  
+Seit dem 1.1.2019 gilt das Verpackungsgesetz.  
+Es soll dazu beitragen, dass mehr Verpackungen - insbesondere aus Kunststoff - recycelt werden und Hersteller Verpackungen produzieren, die tatsächlich verwertbar sind.  
+Ob so weniger Verpackungsmüll anfällt und Verbraucher dadurch finanziell entlastet werden, bleibt abzuwarten.  
     
 # Werkstofftonne statt gelber Sack / gelber Tonne
     
-...
+...  
+
+**Source:**   
+https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-trennen-gelber-sack-restmuell-papier-oder-wohin-sonst-10580
 """,
-    creationDate: DateTime.utc(2023, 2, 1),
+    creationDate: DateTime.utc(2023, 1, 19),
     readTime: const Duration(minutes: 8),
   ),
   CatalogArticle(

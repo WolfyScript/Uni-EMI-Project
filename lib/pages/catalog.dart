@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:intl/intl.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:uni_emi_muell_guard/catalog_article.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
@@ -24,7 +25,7 @@ class CatalogPage extends StatelessWidget {
       body: Center(
         child: ListView.builder(
           padding: const EdgeInsets.all(16),
-          itemCount: 3,
+          itemCount: catalogArticles.length,
           itemBuilder: (context, index) {
             if (index == 0) {
               // First element is the search field
@@ -32,7 +33,7 @@ class CatalogPage extends StatelessWidget {
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search_rounded),
                     border: OutlineInputBorder(),
-                    hintText: "Suche Katalog Artikel"),
+                    hintText: "Suche im Katalog"),
               );
             }
             // Next elements are the articles
@@ -100,6 +101,24 @@ class CatalogPage extends StatelessWidget {
                         )
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.edit_calendar_rounded,
+                          color: Color(0xff64748B),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "${DateFormat("dd.MM.yy").format(article.editDate == null ? article.creationDate : article.editDate!)}",
+                          style: const TextStyle(
+                            color: Color(0xff64748B),
+                          ),
+                        ),
+                      ],
+                    ),
                     IconButton(
                       visualDensity: VisualDensity.compact,
                       color: const Color(0xff64748B),
@@ -139,6 +158,10 @@ class CatalogPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 16,
+                ),
+
               ],
             ),
           ),
@@ -163,7 +186,7 @@ class CatalogArticlePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Katalog"),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
@@ -180,14 +203,14 @@ class CatalogArticlePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                    icon: const Icon(Icons.arrow_back_rounded),
                   ),
                   Expanded(
                     child: Text(
                       args.article.title,
                       maxLines: 1,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: MaterialColor(
@@ -220,9 +243,38 @@ class CatalogArticlePage extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.edit_calendar_rounded,
+                          color: Color(0xff64748B),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Stand: ${DateFormat("dd. MMMM yyyy", "de_DE").format(args.article.editDate == null ? args.article.creationDate : args.article.editDate!)}",
+                          style: const TextStyle(
+                            color: Color(0xff64748B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
                     padding: const EdgeInsets.all(16.0),
                     child: MarkdownBody(
-                      styleSheet: MarkdownStyleSheet(textScaleFactor: 1.1),
+                      styleSheet: MarkdownStyleSheet(
+                        textScaleFactor: 1.04,
+                        h1Padding: const EdgeInsets.symmetric(vertical: 16),
+                        h2Padding: const EdgeInsets.symmetric(vertical: 16),
+                        h3Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h4Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h5Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h6Padding: const EdgeInsets.symmetric(vertical: 4),
+                      ),
                       extensionSet: md.ExtensionSet(
                           md.ExtensionSet.gitHubFlavored.blockSyntaxes, [
                         md.EmojiSyntax(),
@@ -235,7 +287,15 @@ class CatalogArticlePage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16.0),
                     child: MarkdownBody(
-                      styleSheet: MarkdownStyleSheet(textScaleFactor: 1.04,),
+                      styleSheet: MarkdownStyleSheet(
+                        textScaleFactor: 1.04,
+                        h1Padding: const EdgeInsets.symmetric(vertical: 16),
+                        h2Padding: const EdgeInsets.symmetric(vertical: 16),
+                        h3Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h4Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h5Padding: const EdgeInsets.symmetric(vertical: 6),
+                        h6Padding: const EdgeInsets.symmetric(vertical: 4),
+                      ),
                       extensionSet: md.ExtensionSet(
                           md.ExtensionSet.gitHubFlavored.blockSyntaxes, [
                         md.EmojiSyntax(),
@@ -244,7 +304,8 @@ class CatalogArticlePage extends StatelessWidget {
                       selectable: true,
                       data: args.article.content,
                     ),
-                  )
+                  ),
+
                 ],
               ),
             ),
