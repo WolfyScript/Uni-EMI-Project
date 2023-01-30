@@ -12,6 +12,20 @@ class EventType {
 
 }
 
+enum BaseEventType {
+
+  residualWaste("residual_waste"),
+  yellowBag("yellow_waste"),
+  paper("paper"),
+  organicWaste("organic_waste"),
+  bulkyWaste("bulky_waste");
+
+  final String id;
+
+  const BaseEventType(this.id);
+
+}
+
 final disabledEventTypes = HashSet<EventType>(
   hashCode: (p0) => p0.id.hashCode,
   equals: (p0, p1) => p0.id == p1.id,
@@ -38,11 +52,16 @@ void registerEventType(EventType type) {
 }
 
 void registerEventTypes() {
-  registerEventType(EventType("paper", "Papier", const Color(0xff6578DB)));
-  registerEventType(EventType("bio", "Biomüll", const Color(0xff88563A)));
-  registerEventType(EventType("rest", "Restmüll", const Color(0xff494949)));
-  registerEventType(EventType("yellow", "Gelber Sack",const Color(0xffF3E568)));
-  registerEventType(EventType("bulky_waste", "Sperrmüll", const Color(0xffF47D7D)));
+  registerEventType(EventType(BaseEventType.paper.id, "Papier", const Color(0xff6578DB)));
+  registerEventType(EventType(BaseEventType.organicWaste.id, "Biomüll", const Color(0xff88563A)));
+  registerEventType(EventType(BaseEventType.residualWaste.id, "Restmüll", const Color(0xff494949)));
+  registerEventType(EventType(BaseEventType.yellowBag.id, "Gelber Sack",const Color(0xffF3E568)));
+  registerEventType(EventType(BaseEventType.bulkyWaste.id, "Sperrmüll", const Color(0xffF47D7D)));
+}
+
+void removeEventType() {
+
+
 }
 
 EventType? getEventType(String id) {

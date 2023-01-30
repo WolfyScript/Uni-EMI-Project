@@ -1,10 +1,11 @@
-import 'dart:math';
+import 'dart:collection';
 
-import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 import 'package:markdown/markdown.dart' as md;
+import 'package:uni_emi_muell_guard/dummy_data.dart';
+import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/utils.dart';
 
 import '../navbar/nav_sidebar.dart';
@@ -54,66 +55,77 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (context, index) {
             switch (index) {
               case 0:
-                return Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 32,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: const [
-                          Icon(Icons.calendar_today_rounded),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            "Anstehend",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                {
+                  final upcomingEvents = <Event, DateTime>{};
+                  for (var entry in events.entries) {
+                    for (var event in entry.value) {
+                      if (upcomingEvents.length >= 3) break;
+                      if (!disabledEventTypes.contains(event.type)) {
+                        upcomingEvents.putIfAbsent(event, () => entry.key);
+                      }
+                    }
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 32,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: const [
+                            Icon(Icons.calendar_today_rounded),
+                            SizedBox(
+                              width: 12,
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 32,
-                      ),
-                      ...events.entries.where((element) => !disabledEventTypes.contains(element.value.type)).take(3)
-                          .map(
-                            (e) => createUpcomingBtn(
-                              context,
-                              e.value.type.label,
-                              DateFormat.EEEE('de_DE').format(e.key),
-                              DateFormat("dd.MM").format(e.key),
+                            Text(
+                              "Anstehend",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          )
-                          .toList(),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        children: const [
-                          Icon(Icons.newspaper_rounded),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            "Aktuelles",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        ...upcomingEvents.entries
+                            .map(
+                              (e) => createUpcomingBtn(
+                                context,
+                                e.key.type.label,
+                                DateFormat.EEEE('de_DE').format(e.value),
+                                DateFormat("dd.MM").format(e.value),
+                              ),
+                            )
+                            .toList(),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Row(
+                          children: const [
+                            Icon(Icons.newspaper_rounded),
+                            SizedBox(
+                              width: 12,
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                    ],
-                  ),
-                );
+                            Text(
+                              "Aktuelles",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                      ],
+                    ),
+                  );
+                }
               default:
                 if (newsArticles.length > index - 1) {
                   NewsArticle article = newsArticles.elementAt(index - 1);
@@ -300,9 +312,10 @@ Widget createNewsArticle(BuildContext context, NewsArticle article) {
                 child: SafeArea(
                   child: MarkdownBody(
                     extensionSet: md.ExtensionSet(
-                      md.ExtensionSet.gitHubFlavored.blockSyntaxes,
-                      [md.EmojiSyntax(), ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes]
-                    ),
+                        md.ExtensionSet.gitHubFlavored.blockSyntaxes, [
+                      md.EmojiSyntax(),
+                      ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
+                    ]),
                     selectable: true,
                     data: article.summary,
                   ),

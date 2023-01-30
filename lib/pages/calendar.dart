@@ -1,11 +1,9 @@
-import 'dart:collection';
-
+import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
 import 'package:uni_emi_muell_guard/utils.dart';
-import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -22,8 +20,8 @@ class CalendarState extends State<CalendarPage> {
   DateTime _focusedDate = DateTime.utc(2023, 2, 8);
 
   List<Event> _getEvents(DateTime day) {
-    Event? event = events[day];
-    if (event != null) return [event];
+    List<Event>? eventList = events[day];
+    if (eventList != null) return eventList;
     return [];
   }
 
@@ -31,6 +29,8 @@ class CalendarState extends State<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime currentTime = DateTime.now();
+
     return Scaffold(
       drawer: const NavSidebar(),
       appBar: AppBar(
@@ -38,7 +38,11 @@ class CalendarState extends State<CalendarPage> {
       ),
       body: Center(
         child: ListView(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: 16,
+          ),
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -69,21 +73,75 @@ class CalendarState extends State<CalendarPage> {
                   _focusedDate = focusedDay;
                 },
                 calendarBuilders: CalendarBuilders<Event>(
+                  todayBuilder: (context, day, focusedDay) {
+                    return Center(
+                      child: Container(
+                        margin: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.7),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Text(
+                            day.day.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  selectedBuilder: (context, day, focusedDay) {
+                    return Center(
+                      child: Container(
+                        margin: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Text(
+                            day.day.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                   markerBuilder: (context, day, events) {
                     if (events.isEmpty) return null;
-                    Event event = events.first;
-                    if (disabledEventTypes.contains(event.type)) {
+                    List<Event> enabledEvents = events
+                        .where((element) =>
+                            !disabledEventTypes.contains(element.type))
+                        .toList();
+
+                    if (enabledEvents.isEmpty) {
                       return Container();
                     }
-                    if (day != _selectedDate) {
+                    Event event = enabledEvents.first;
+                    bool isToday = isSameDay(day, currentTime);
+                    bool afterOrIsToday = !day.isBefore(currentTime) || isToday;
+
+                    if (!isSameDay(day, _selectedDate) &&
+                        !isToday &&
+                        enabledEvents.length <= 1) {
                       return Center(
                         child: Container(
                           margin: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(8)),
-                            color:
-                                MaterialColor(event.type.color.value, const {}),
+                            color: MaterialColor(
+                                event.type.color
+                                    .withOpacity(afterOrIsToday ? 1 : 0.7)
+                                    .value,
+                                const {}),
                           ),
                           child: Center(
                             child: Text(day.day.toString()),
@@ -93,14 +151,33 @@ class CalendarState extends State<CalendarPage> {
                     } else {
                       return Center(
                         child: Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.only(
-                              top: 40, left: 16, right: 16, bottom: 1),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            //borderRadius: const BorderRadius.all(Radius.circular(8)),
-                            border: Border.all(color: Colors.black87, width: 1),
-                            color:
-                                MaterialColor(event.type.color.value, const {}),
+                            top: 38,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ...enabledEvents.map<Widget>((e) {
+                                return Container(
+                                  height: double.infinity,
+                                  width: 16,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.black87),
+                                    color: MaterialColor(
+                                        e.type.color
+                                            .withOpacity(
+                                                afterOrIsToday ? 1 : 0.7)
+                                            .value,
+                                        const {}),
+                                  ),
+                                );
+                              }),
+                            ],
                           ),
                         ),
                       );
@@ -126,9 +203,18 @@ class CalendarState extends State<CalendarPage> {
                 spacing: 64,
                 runSpacing: 8,
                 alignment: WrapAlignment.spaceBetween,
-                children: eventTypes.values
-                    .map((e) => buildChip(e, context))
-                    .toList(),
+                children: [
+                  ...eventTypes.values
+                      .map((e) => buildChip(e, context))
+                      .toList(),
+                  ActionChip(
+                    visualDensity: VisualDensity.comfortable,
+                    label: const Text("Hinzufügen",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    onPressed: () {},
+                    avatar: const Icon(Icons.add_circle_rounded),
+                  )
+                ],
               ),
             ),
           ],
@@ -145,7 +231,11 @@ class CalendarState extends State<CalendarPage> {
 
     return InputChip(
       padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
-      label: Text(eventType.label),
+      label: Text(
+        eventType.label,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      iconTheme: const IconThemeData(size: 18, color: Color(0xffD9D9D9)),
       visualDensity: VisualDensity.comfortable,
       backgroundColor: const Color(0xffD9D9D9),
       selected: !disabledEventTypes.contains(eventType),
@@ -158,10 +248,9 @@ class CalendarState extends State<CalendarPage> {
           }
         });
       },
-      avatar: CircleAvatar(
-        backgroundColor: eventType.color,
-        foregroundColor: eventType.color,
-        child: Container(),
+      avatar: Container(
+        decoration:
+            BoxDecoration(color: eventType.color, shape: BoxShape.circle),
       ),
     );
   }

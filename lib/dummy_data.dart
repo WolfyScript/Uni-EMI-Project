@@ -5,8 +5,9 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:uni_emi_muell_guard/catalog_article.dart';
 import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/news_article.dart';
+import 'package:uni_emi_muell_guard/utils.dart';
 
-final events = LinkedHashMap<DateTime, Event>(
+final events = LinkedHashMap<DateTime, List<Event>>(
   equals: (e0, e1) {
     return isSameDay(e0, e1);
   },
@@ -14,11 +15,11 @@ final events = LinkedHashMap<DateTime, Event>(
     return key.day * 1000000 + key.month * 10000 + key.year;
   },
 )..addAll({
-    DateTime.utc(2023, 1, 30): Event("paper"),
-    DateTime.utc(2023, 2, 7): Event("bio"),
-    DateTime.utc(2023, 2, 16): Event("yellow"),
-    DateTime.utc(2023, 2, 20): Event("bulky_waste"),
-    DateTime.utc(2023, 2, 23): Event("rest"),
+    DateTime.utc(2023, 1, 30): [Event(BaseEventType.paper.id)],
+    DateTime.utc(2023, 2, 7): [Event(BaseEventType.organicWaste.id), Event(BaseEventType.residualWaste.id)],
+    DateTime.utc(2023, 2, 16): [Event(BaseEventType.yellowBag.id)],
+    DateTime.utc(2023, 2, 20): [Event(BaseEventType.bulkyWaste.id)],
+    DateTime.utc(2023, 2, 23): [Event(BaseEventType.residualWaste.id)],
   });
 
 final catalogArticles = [
