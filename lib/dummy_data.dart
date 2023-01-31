@@ -61,7 +61,7 @@ Ob so weniger Verpackungsmüll anfällt und Verbraucher dadurch finanziell entla
 https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-trennen-gelber-sack-restmuell-papier-oder-wohin-sonst-10580
 """,
     creationDate: DateTime.utc(2023, 1, 19),
-    readTime: const Duration(minutes: 8),
+    readTime: const Duration(minutes: 18),
   ),
   CatalogArticle(
     title: "Altbatterien & Akkus",
@@ -85,11 +85,11 @@ Tipps zur richtigen Entsorgung
 https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-haushalt-kleine-menge-grosse-wirkung-13929#altbatterien-akkus
 """,
     creationDate: DateTime.utc(2022, 6, 17),
-    readTime: const Duration(minutes: 8),
+    readTime: const Duration(minutes: 10),
   ),
   CatalogArticle(
     title: "Schadstoffe",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
+    image: Image.network('https://www.verbraucherzentrale.de/sites/default/files/styles/article_full_image_desktop/public/2019-07/Eimer%20Pinsel%20renovieren%20streichen%20Farbe%20Eimer%20paint-933395%20tookapic%20CC0%20pixabay%20GemRed.jpg', fit: BoxFit.cover),
     summary: "**Sondermüll wie Altöl, Renovierungsabfälle, Leuchtstoffröhren oder Batterien gehören nicht in den Hausmüll. Sie müssen separat entsorgt werden.**",
     content: """
 #### Das Wichtigste in Kürze:
@@ -136,15 +136,55 @@ Immer mehr Rückstände von Medikamenten tauchen in Gewässern auf. Denn die Kl�
 https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-haushalt-kleine-menge-grosse-wirkung-13929
 """,
     creationDate: DateTime.utc(2023, 2, 12),
-    readTime: const Duration(minutes: 8),
+    readTime: const Duration(minutes: 28),
   ),
   CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
+    title: "Elektroschrott",
+    image: Image.network('https://www.verbraucherzentrale.de/sites/default/files/styles/article_full_image_desktop/public/2018-08/Elektroschrott_animaflora_Fotolia.jpg', fit: BoxFit.cover),
+    summary: "**Wohin mit Elektroschrott? Noch mehr Händler müssen ausgediente Elektrogeräte zurücknehmen. Lebensmittelgeschäfte und Discounter sind ab dem 1. Juli 2022 zur Rücknahme verpflichtet. Online-Shops müssen für eine verbraucherfreundlichere Rücknahme sorgen.**",
+    content: """
+### Das Wichtigste in Kürze
+* Elektroschrott können Sie bei Händlern abgeben. Ab dem 1. Juli 2022 auch in großen Lebensmittelgeschäften/Discounter, die Elektroartikel verkaufen. 
+* Auch der Online-Handel ist zur kostenlosen Rücknahme verpflichtet.
+* Bei größeren Alt-Geräten erfolgt die Rücknahme im Tausch alt gegen neu.
+* Jede Kommune hält Sammelstellen zur kostenlosen Abgabe bereit.
+
+Kaputter Fön, defekter Toaster, aussortierter Computer – vielfach gammeln ausgemusterte Geräte im Keller vor sich hin oder landen in der Mülltonne. 
+So fristen in Deutschland über 200 Millionen alte Handys ein "ungenutztes Dasein" in Schubladen. 
+Und auch Großgeräte werden nicht sachgerecht entsorgt, sondern enden häufig in undurchsichtigen Schrotthändler-Kanälen. 
+Bislang werden nur rund 45 Prozent des Elektroschrotts ordnungsgemäß entsorgt. 
+Damit ist Deutschland meilenweit von der EU-weit vorgeschriebenen Sammelquote von 65 Prozent entfernt.   
+
+Mit  dem novellierten Elektro- und Elektronikgerätegesetz (ElektroG) soll die Rückgabe ab 1. Juli 2022 für Verbraucherinnen und Verbraucher einfacher werden. 
+Denn nur wenn die elektrischen und elektronischen Oldies sachgerecht entsorgt werden, können die verwendeten Rohstoffe in diesen Geräten auch wieder recycelt werden.  
+
+## Wer muss was zurücknehmen? Was gilt ab 1. Juli 2022?
+Bislang galt, dass nur Geschäfte mit einer Verkaufsfläche von mehr als 400 Quadratmetern für Elektrogeräte Altgeräte kostenfrei zurücknehmen müssen.  
+Neu ist, dass ab dem 1. Juli 2022 auch Lebensmitteleinzelhändler oder Discounter zur Rücknahme von Elektroaltgeräten verpflichtet sind, deren gesamte Verkaufsfläche größer als 800 Quadratmeter ist und die dauerhaft oder immer wieder Elektrogeräte vertreiben.  
+
+Für den Online-Handel gelten die gleichen gesetzlichen Bestimmungen zur kostenlosen Rücknahme von Elektroaltgeräten wie für den stationären Handel. 
+Sie sind zur Rücknahme verpflichtet, wenn Lager- und Versandflächen größer als 400 qm bzw. 800 qm sind. Da die Berechnung dieser Flächen neu definiert wurde, fallen nun mehr Online-Händler unter diese Rücknahmevorgaben. 
+Eine freiwillige Rücknahme ist immer möglich: Das machen einige kleinere Händler und Hersteller auch schon länger. 
+Dieser Service muss für Verbraucher:innen kostenlos sein, lediglich Transportkosten können in Rechnung gestellt werden.  
+
+### Kommunen sammeln weiterhin Elektroschrott
+Für die Sammlung von Elektro-Altgeräten müssen Kommunen nach wie vor Sammelstellen (meist Recyclinghöfe) vorhalten. 
+Dort können Sie alle Altgeräte kostenlos abgeben. 
+Für eine Abholung zu Hause – zum Beispiel mit dem Sperrmüll – kann die Kommune allerdings Gebühren verlangen.  
+
+### Rücknahmeangebote unterscheiden sich nach Gerätegrößen
+Geräte mit einer Kantenlänge unter 25 Zentimetern (also: jede Seite des Geräts darf nicht länger sein) müssen immer kostenlos zurückgenommen werden – unabhängig davon, ob Sie es in dem bestimmten Laden gekauft haben oder dort ein neues Gerät kaufen. 
+Darunter fallen zum Beispiel Toaster, Eier- oder Wasserkocher oder Smartphones. Die Geschäfte - eben auch Supermärkte und Discounter - können dafür Sammeltonnen aufstellen. 
+Die Rücknahme ist allerdings auf drei Geräte pro Geräteart bei der Abgabe beschränkt. 
+Für größere Geräte gilt das Prinzip alt gegen neu: Wird ein Gerät gekauft, muss ein Gerät der gleichen Kategorie (z.B. Fernseher gegen Fernseher) kostenfrei zurückgenommen werden. Weitere "Klassiker" sind Kühlschränke, Waschmaschinen und Wäschetrockner.  
+
+...
+
+#### Source:
+https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/elektroschrott-diese-geraete-und-gegenstaende-gehoeren-ins-recycling-12861
+""",
     creationDate: DateTime.utc(2023, 2, 16),
-    readTime: const Duration(minutes: 8),
+    readTime: const Duration(minutes: 38),
   ),
   CatalogArticle(
     title: "",
