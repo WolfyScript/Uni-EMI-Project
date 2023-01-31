@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:uni_emi_muell_guard/dialogs/add_event_type_dialog.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
@@ -201,7 +201,7 @@ class CalendarState extends State<CalendarPage> {
             Container(
               padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
               child: Wrap(
-                spacing: 64,
+                spacing: 16,
                 runSpacing: 8,
                 alignment: WrapAlignment.spaceBetween,
                 children: [
@@ -213,115 +213,16 @@ class CalendarState extends State<CalendarPage> {
                     label: const Text("Hinzufügen",
                         style: TextStyle(fontWeight: FontWeight.bold)),
                     onPressed: () {
-                      showGeneralDialog(
-                        context: context,
-                        pageBuilder: (context, animation, secondaryAnimation) {
-                          return Dialog(
-                            backgroundColor: Colors.white,
-                            insetPadding: EdgeInsets.symmetric(
-                                vertical: 24, horizontal: 40),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16)),
-                            child: SingleChildScrollView(
-                              child: Container(
-                                padding: const EdgeInsets.all(16),
-                                constraints: BoxConstraints.expand(
-                                    width: 300, height: 400),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Abholart Hinzufügen",
-                                      style: TextStyle(
-                                        color: MaterialColor(
-                                            Theme.of(context)
-                                                .primaryColor
-                                                .value,
-                                            const {}),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 16,
-                                    ),
-                                    /*
-                                    SlidePicker(
-                                      pickerColor: Colors.green,
-                                      enableAlpha: false,
-                                      labelTypes: const [],
-                                      onColorChanged: (value) {},
-                                    )
-                                     */
-                                    Expanded(
-                                      flex: 1,
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: MaterialPicker(
-                                          pickerColor: Colors.white,
-                                          portraitOnly: true,
-                                          enableLabel: true,
-                                          onColorChanged: (value) {},
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 16,
-                                    ),
-                                    const TextField(
-                                      decoration:
-                                          InputDecoration(hintText: "Name"),
-                                    ),
-                                    const SizedBox(
-                                      height: 16,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        OutlinedButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: const Text("Abbrechen")),
-                                        ElevatedButton(
-                                            onPressed: () {},
-                                            child: const Text("Hinzufügen"))
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                      /*
-                      showCupertinoModalBottomSheet(
+                      showDialog(
                         context: context,
                         builder: (context) {
-                          return Center(
-                            child: Container(
-                              padding: EdgeInsets.all(16),
-                              child: ListView(
-                                shrinkWrap: true,
-                                children: [
-                                  ElevatedButton(onPressed: () {
-                                    showDialog(context: context, builder: (context) {
-                                      return Container(child: Text("TEst Dialog"),);
-                                    },);
-                                  }, child: Text("Test"))
-                                ],
-                              )
-                            ),
-                          );
+                          return AddEventTypeDialog(notify: () {
+                            setState(() {});
+                          },);
                         },
                       );
-
-                       */
                     },
-                    avatar: const Icon(Icons.add_circle_rounded),
+                    avatar: const Icon(Icons.add_circle_outline_rounded),
                   )
                 ],
               ),
@@ -333,11 +234,6 @@ class CalendarState extends State<CalendarPage> {
   }
 
   Widget buildChip(EventType eventType, BuildContext context) {
-    BorderSide borderSide = const BorderSide(
-      color: Colors.black45,
-      width: 2,
-    );
-
     return InputChip(
       padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
       label: Text(
@@ -355,6 +251,11 @@ class CalendarState extends State<CalendarPage> {
           } else {
             hiddenEventTypes.add(eventType);
           }
+        });
+      },
+      onDeleted: () {
+        setState(() {
+          removeEventType(eventType);
         });
       },
       avatar: Container(

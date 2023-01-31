@@ -59,9 +59,8 @@ void registerEventTypes() {
   registerEventType(EventType(BaseEventType.bulkyWaste.id, "Sperrmüll", const Color(0xffF47D7D)));
 }
 
-void removeEventType() {
-
-
+void removeEventType(EventType? type) {
+  eventTypes.remove(type?.id);
 }
 
 EventType? getEventType(String id) {
