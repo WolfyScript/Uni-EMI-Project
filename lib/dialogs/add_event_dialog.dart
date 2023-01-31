@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
@@ -7,11 +6,11 @@ import 'package:uni_emi_muell_guard/event.dart';
 import '../utils.dart';
 
 class AddEventDialog extends StatefulWidget {
-
   final Function() notify;
   final DateTime selectedDay;
 
-  const AddEventDialog({super.key, required this.selectedDay, required this.notify});
+  const AddEventDialog(
+      {super.key, required this.selectedDay, required this.notify});
 
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +19,6 @@ class AddEventDialog extends StatefulWidget {
 }
 
 class _AddEventDialogState extends State<AddEventDialog> {
-
   final Function() notify;
   EventType? selectedType;
   final DateTime selectedDay;
@@ -35,7 +33,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         padding: const EdgeInsets.all(16),
-        constraints: const BoxConstraints(maxHeight: 460),
+        constraints: const BoxConstraints(maxHeight: 460, maxWidth: 360),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -50,8 +48,10 @@ class _AddEventDialogState extends State<AddEventDialog> {
             const SizedBox(
               height: 8,
             ),
-            Text("Datum: ${DateFormat('dd. MMMM yyyy','de_DE').format(selectedDay)}"),
-            const SizedBox(height: 16,),
+            Text(DateFormat('dd. MMMM yyyy', 'de_DE').format(selectedDay)),
+            const SizedBox(
+              height: 16,
+            ),
             Expanded(
               flex: 1,
               child: SingleChildScrollView(
@@ -63,7 +63,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     ...eventTypes.values
                         .map((e) => buildChip(e, context))
                         .toList()
-
                   ],
                 ),
               ),
@@ -81,24 +80,37 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text("Abbrechen")),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Abbrechen"),
+                    )),
                 ElevatedButton(
                     onPressed: () {
                       if (selectedType == null) {
                         return;
                       }
                       setState(() {
-                        events.update(selectedDay, (value) {
-                            return value..add(Event(selectedType!.id));
-                        }, ifAbsent: () {
-                          return [Event(selectedType!.id)];
-                        },);
+                        events.update(
+                          selectedDay,
+                          (value) {
+                            if (value.indexWhere((element) => element.type == selectedType) < 0) {
+                              return value..add(Event(selectedType!.id));
+                            }
+                            return value;
+                          },
+                          ifAbsent: () {
+                            return [Event(selectedType!.id)];
+                          },
+                        );
                       });
 
                       Navigator.of(context).pop();
                       notify.call();
                     },
-                    child: const Text("Hinzufügen"))
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Hinzufügen"),
+                    ))
               ],
             )
           ],
@@ -125,7 +137,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
       },
       avatar: Container(
         decoration:
-        BoxDecoration(color: eventType.color, shape: BoxShape.circle),
+            BoxDecoration(color: eventType.color, shape: BoxShape.circle),
       ),
     );
   }
