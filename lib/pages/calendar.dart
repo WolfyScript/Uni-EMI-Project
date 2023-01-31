@@ -52,6 +52,9 @@ class CalendarState extends State<CalendarPage> {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: TableCalendar(
                 locale: 'de_DE',
+                availableCalendarFormats: const {
+                  CalendarFormat.month: "Monat",
+                },
                 calendarFormat: _calendarFormat,
                 focusedDay: _focusedDate,
                 firstDay: DateTime.utc(2022),
