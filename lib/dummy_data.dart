@@ -57,7 +57,7 @@ Ob so weniger Verpackungsmüll anfällt und Verbraucher dadurch finanziell entla
     
 ...  
 
-**Source:**   
+#### Source:   
 https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-trennen-gelber-sack-restmuell-papier-oder-wohin-sonst-10580
 """,
     creationDate: DateTime.utc(2023, 1, 19),
@@ -69,21 +69,72 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-t
     summary:
         "**Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: \"Nach Gebrauch zurück\".**",
     content: """
-# Heading 1  
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+Damit ausgediente Akkus und Batterien nicht achtlos in der Mülltonne landen, sind Handel und Kommunen zur kostenlosen Rücknahme verpflichtet: 
+Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: "Nach Gebrauch zurück".  
+
+Tipps zur richtigen Entsorgung
+* Alle ausgepowerten Batterien und Akkus müssen im Handel zurückgegeben werden.  
+  Kommunen können freiwillig zusätzliche Sammelstellen anbieten. Der Hausmüll ist für die schadstoffhaltigen Energiespender tabu.
+* Knopfzelle, Akku und Co. aller Marken können kostenlos zurückgegeben werden - auch dann, wenn keine neuen Energiezellen gekauft werden. Händler müssen jedoch nur die Typen zurücknehmen, die sie auch im Sortiment führen oder geführt haben.
+* Wer Starterbatterien aus dem Auto zurückgibt, braucht das Portemonnaie ebenfalls nicht zu zücken, denn auch deren Rücknahme ist kostenlos. Wird beim Kauf einer neuen Batterie jedoch keine alte abgegeben, muss der Händler 7,50 Euro Pfand verlangen - und darf diesen erst wieder auszahlen, wenn das ausgediente Kraftpaket abgeliefert wird.
+* Geräte mit fest eingebauten Batterien oder Akkus gehören zum Elektroschrott und können bei den kommunalen Sammelstellen, in großen Elektromärkten und im Onlinehandel kostenlos zurückgegeben werden.
+* Verbrauchte Akkus von Pedelecs oder Akkuwerkzeugen nimmt ebenfalls der Fachhandel an. Wichtig ist es, die Kontaktstellen der Akkus abzukleben, damit während der weiteren Behandlung kein Schaden entsteht.
+* Und Achtung: Selbst die mit "0 % Hg, 0 % Cd" gekennzeichneten Batterien sind keineswegs schadstofffrei. In ihnen können ätzende, wasser- oder umweltgefährdende Stoffe wie zum Beispiel Mangandioxid; Kalilauge oder Schwefelsäure stecken.
+
+#### Source:
+https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-haushalt-kleine-menge-grosse-wirkung-13929#altbatterien-akkus
 """,
-    creationDate: DateTime.utc(2023, 2, 10),
+    creationDate: DateTime.utc(2022, 6, 17),
     readTime: const Duration(minutes: 8),
   ),
   CatalogArticle(
-    title: "",
+    title: "Schadstoffe",
     image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
+    summary: "**Sondermüll wie Altöl, Renovierungsabfälle, Leuchtstoffröhren oder Batterien gehören nicht in den Hausmüll. Sie müssen separat entsorgt werden.**",
+    content: """
+#### Das Wichtigste in Kürze:
+* Sondermüll wie Altöl, Renovierungsabfälle, Leuchtstoffröhren oder Batterien gehören nicht in den Hausmüll. Sie müssen separat entsorgt werden.
+* Giftige Abfälle können entweder am Schadstoffmobil des Entsorgers oder an einem der Recyclinghöfe abgegeben werden. Die Öffnungszeiten und Stationen des Schadstoffmobils erfahren Sie im Abfallkalender oder der Homepage ihres Entsorgers.
+* Auch einige Händler nehmen Schadstoffe an, wenn sie damit Handeln. So kann Altöl da abgegeben werden, wo man neues kauft.
+* Mischen Sie flüssige Abfälle niemals und bewahren sie sie am besten im Originalbehälter auf.
+
+In vielen Haushaltsprodukten schlummern gefährliche Schadstoffe. Die Mengen sind verhältnismäßig klein, doch ihre schädliche Wirkung auf die Umwelt ist groß.   
+Schwermetalle, Altöl oder giftige Chemikalien, die über den Hausmüll in die Umwelt gelangen, können Pflanzen und Tiere schädigen und sich in der Nahrungskette anreichern.  
+
+Produkte mit schädlichen Inhaltsstoffen können Verbraucher oft an besonderen Warnhinweisen auf der Verpackung erkennen. So steht das Symbol "Toter Baum und Fisch" für umweltgefährdende Stoffe, ein "Totenkopf" auf der Verpackung weist auf Giftigkeit hin, eine durchgestrichene Mülltonne auf Altbatterien auf Schwermetalle.  
+Solche Produkte müssen separat über Sondermüllannahmestellen entsorgt oder an den Handel zurückgegeben werden.  
+
+Wir haben einige solcher problematischer Produkte aufgelistet und geben dazu die passenden Entsorgungstipps.  
+
+# Altbatterien und Akkus
+Damit ausgediente Akkus und Batterien nicht achtlos in der Mülltonne landen, sind Handel und Kommunen zur kostenlosen Rücknahme verpflichtet: 
+Von der Knopfzelle über Geräteakkus bis hin zur Autobatterie - bei all diesen mobilen Energiespendern heißt die oberste Nutzerpflicht: "Nach Gebrauch zurück".  
+
+Tipps zur richtigen Entsorgung
+* Alle ausgepowerten Batterien und Akkus müssen im Handel zurückgegeben werden.  
+  Kommunen können freiwillig zusätzliche Sammelstellen anbieten. Der Hausmüll ist für die schadstoffhaltigen Energiespender tabu.
+* Knopfzelle, Akku und Co. aller Marken können kostenlos zurückgegeben werden - auch dann, wenn keine neuen Energiezellen gekauft werden. Händler müssen jedoch nur die Typen zurücknehmen, die sie auch im Sortiment führen oder geführt haben.
+* Wer Starterbatterien aus dem Auto zurückgibt, braucht das Portemonnaie ebenfalls nicht zu zücken, denn auch deren Rücknahme ist kostenlos. Wird beim Kauf einer neuen Batterie jedoch keine alte abgegeben, muss der Händler 7,50 Euro Pfand verlangen - und darf diesen erst wieder auszahlen, wenn das ausgediente Kraftpaket abgeliefert wird.
+* Geräte mit fest eingebauten Batterien oder Akkus gehören zum Elektroschrott und können bei den kommunalen Sammelstellen, in großen Elektromärkten und im Onlinehandel kostenlos zurückgegeben werden.
+* Verbrauchte Akkus von Pedelecs oder Akkuwerkzeugen nimmt ebenfalls der Fachhandel an. Wichtig ist es, die Kontaktstellen der Akkus abzukleben, damit während der weiteren Behandlung kein Schaden entsteht.
+* Und Achtung: Selbst die mit "0 % Hg, 0 % Cd" gekennzeichneten Batterien sind keineswegs schadstofffrei. In ihnen können ätzende, wasser- oder umweltgefährdende Stoffe wie zum Beispiel Mangandioxid; Kalilauge oder Schwefelsäure stecken.
+
+# Altmedikamente
+Immer mehr Rückstände von Medikamenten tauchen in Gewässern auf. Denn die Kläranlagen, die das Abwasser reinigen, sind keine Alleskönner. Ein sparsamerer Umgang mit Medikamenten entlastet deshalb nicht nur das eigene Budget, sondern auch Bäche, Stauseen und Flüsse. Von der Zurückhaltung profitiert das Konto erneut - weil andernfalls zunehmend kostspieligere Aufbereitungsverfahren nötig werden, um Grund- oder Flusswasser in den Wasserwerken zu reinigen und zu Trinkwasser aufzubereiten.  
+
+#### Tipps zur richtigen Entsorgung
+* Wer nur kleine Mengen an Medikamenten kauft, hat später auch kein Entsorgungsproblem.
+* **In Entsorgungsgebieten, die an Müllverbrennungsanlagen (MVA) angeschlossen sind**, können abgelaufene oder nicht mehr benötigte Arzneien in die graue Restmülltonne geworfen werden. Das gilt auch für angebrochene Glas-Fläschchen. Die Wirkstoffe der Medikamente verlieren bei der Verbrennung ihre ökologische Schädlichkeit. Hingegen dürfen Arzneimittel nie über die Toilette oder das Spülbecken entsorgt werden.  
+  Um Altmedikamente gegen eine missbräuchliche Verwendung zu sichern, empfiehlt es sich, sie vor dem Wurf in die Tonne in Zeitungspapier einzuwickeln.
+* Wer wirklich sicher gehen will, kann seine Altmedikamente auch in Apotheken zurück geben. Viele Apotheken bieten diesen Service freiwillig an.
+* **In Entsorgungsgebieten, die an eine mechanisch-biologische Abfallbehandlungsanlage (MBA) angeschlossen sind**, sollten die Altmedikamente bei der Sondermüllsammlung oder, sofern möglich, in Apotheken abgegeben werden. Leere Arzneimittel-Fläschchen gehören in den Restmüll, weil sie aus anderem Glas sind als herkömmliche Flaschen, leere Pillen-Blister-Verpackungen in den gelben Sack und leere Pappschachteln zum Altpapier.
+
+# Altöl
+...
+
+#### Source:
+https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-haushalt-kleine-menge-grosse-wirkung-13929
+""",
     creationDate: DateTime.utc(2023, 2, 12),
     readTime: const Duration(minutes: 8),
   ),
@@ -101,46 +152,6 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/muell-richtig-t
     summary: "",
     content: "",
     creationDate: DateTime.utc(2023, 2, 19),
-    readTime: const Duration(minutes: 8),
-  ),
-  CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
-    creationDate: DateTime.utc(2023, 2, 20),
-    readTime: const Duration(minutes: 8),
-  ),
-  CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
-    creationDate: DateTime.utc(2023, 2, 22),
-    readTime: const Duration(minutes: 8),
-  ),
-  CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
-    creationDate: DateTime.utc(2023, 2, 24),
-    readTime: const Duration(minutes: 8),
-  ),
-  CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
-    creationDate: DateTime.utc(2023, 2, 26),
-    readTime: const Duration(minutes: 8),
-  ),
-  CatalogArticle(
-    title: "",
-    image: Image.asset('assets/test-image.jpg', fit: BoxFit.cover),
-    summary: "",
-    content: "",
-    creationDate: DateTime.utc(2023, 2, 28),
     readTime: const Duration(minutes: 8),
   ),
 ];
