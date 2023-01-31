@@ -89,7 +89,7 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-
   ),
   CatalogArticle(
     title: "Schadstoffe",
-    image: Image.network('https://www.verbraucherzentrale.de/sites/default/files/styles/article_full_image_desktop/public/2019-07/Eimer%20Pinsel%20renovieren%20streichen%20Farbe%20Eimer%20paint-933395%20tookapic%20CC0%20pixabay%20GemRed.jpg', fit: BoxFit.cover),
+    image: Image.asset('assets/Eimer Pinsel renovieren streichen Farbe Eimer paint-933395 tookapic CC0 pixabay GemRed.jpg', fit: BoxFit.cover),
     summary: "**Sondermüll wie Altöl, Renovierungsabfälle, Leuchtstoffröhren oder Batterien gehören nicht in den Hausmüll. Sie müssen separat entsorgt werden.**",
     content: """
 #### Das Wichtigste in Kürze:
@@ -140,7 +140,7 @@ https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/schadstoffe-im-
   ),
   CatalogArticle(
     title: "Elektroschrott",
-    image: Image.network('https://www.verbraucherzentrale.de/sites/default/files/styles/article_full_image_desktop/public/2018-08/Elektroschrott_animaflora_Fotolia.jpg', fit: BoxFit.cover),
+    image: Image.asset('assets/Elektroschrott_animaflora_Fotolia.jpg', fit: BoxFit.cover),
     summary: "**Wohin mit Elektroschrott? Noch mehr Händler müssen ausgediente Elektrogeräte zurücknehmen. Lebensmittelgeschäfte und Discounter sind ab dem 1. Juli 2022 zur Rücknahme verpflichtet. Online-Shops müssen für eine verbraucherfreundlichere Rücknahme sorgen.**",
     content: """
 ### Das Wichtigste in Kürze
