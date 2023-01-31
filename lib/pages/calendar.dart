@@ -6,6 +6,8 @@ import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
 import 'package:uni_emi_muell_guard/utils.dart';
 
+import '../dialogs/add_event_dialog.dart';
+
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
@@ -55,6 +57,22 @@ class CalendarState extends State<CalendarPage> {
                 lastDay: DateTime.utc(2030),
                 eventLoader: (day) {
                   return _getEvents(day);
+                },
+                onDayLongPressed: (selectedDay, focusedDay) {
+                  setState(() {
+                    _selectedDate = selectedDay;
+                    _focusedDate = focusedDay;
+                  });
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AddEventDialog(
+                          selectedDay: selectedDay,
+                          notify: () {
+                            setState(() {});
+                          });
+                    },
+                  );
                 },
                 onFormatChanged: (format) {
                   setState(() {
@@ -121,7 +139,6 @@ class CalendarState extends State<CalendarPage> {
                         .where((element) =>
                             !hiddenEventTypes.contains(element.type))
                         .toList();
-
                     if (enabledEvents.isEmpty) {
                       return Container();
                     }
@@ -191,7 +208,19 @@ class CalendarState extends State<CalendarPage> {
               padding: const EdgeInsets.symmetric(vertical: 8),
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AddEventDialog(
+                        selectedDay: _selectedDate,
+                        notify: () {
+                          setState(() {});
+                        },
+                      );
+                    },
+                  );
+                },
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text("Termin Hinzufügen"),
@@ -216,9 +245,11 @@ class CalendarState extends State<CalendarPage> {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return AddEventTypeDialog(notify: () {
-                            setState(() {});
-                          },);
+                          return AddEventTypeDialog(
+                            notify: () {
+                              setState(() {});
+                            },
+                          );
                         },
                       );
                     },
