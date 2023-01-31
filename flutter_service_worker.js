@@ -13,8 +13,8 @@ const RESOURCES = {
 "assets/assets/abfallsortierung.jpg": "8f4d1dbc31d85247bb022b4a907cfa76",
 "assets/assets/batteries.webp": "6e5b1f5198a57f49db490c7c0ddce3a4",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
-"assets/NOTICES": "31b3e51164d29335d95203b7f030cc8c",
-"main.dart.js": "b06343111352d134e2da52ca540e773c",
+"assets/NOTICES": "494d404795d653c21df7ea09db8ec9d0",
+"main.dart.js": "538bfff95826048ad0463ba7573f8271",
 "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
@@ -26,8 +26,8 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
-"index.html": "591db6b96cb94cdfe33cbda028a938bc",
-"/": "591db6b96cb94cdfe33cbda028a938bc"
+"index.html": "1462e23b20bf2532742135e7d7473917",
+"/": "1462e23b20bf2532742135e7d7473917"
 };
 
 // The application shell files that are downloaded before a service worker can
