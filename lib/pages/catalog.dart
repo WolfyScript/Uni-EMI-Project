@@ -237,7 +237,6 @@ class CatalogArticlePage extends StatelessWidget {
                 children: [
                   // First element is the search field
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
                     child: SizedBox(
                       height: 160,
                       width: double.infinity,
