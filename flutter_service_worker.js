@@ -14,7 +14,7 @@ const RESOURCES = {
 "assets/assets/batteries.webp": "6e5b1f5198a57f49db490c7c0ddce3a4",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
 "assets/NOTICES": "494d404795d653c21df7ea09db8ec9d0",
-"main.dart.js": "7573a8eee9bd8603930908958d7a24c5",
+"main.dart.js": "e05a8eebc0d1e870e53105be6bc74f5c",
 "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
@@ -26,8 +26,8 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
-"index.html": "1736364fe9433dc30ee80b49f5010a35",
-"/": "1736364fe9433dc30ee80b49f5010a35"
+"index.html": "3b8279d45b1fc16e344a7989f89b0bea",
+"/": "3b8279d45b1fc16e344a7989f89b0bea"
 };
 
 // The application shell files that are downloaded before a service worker can
