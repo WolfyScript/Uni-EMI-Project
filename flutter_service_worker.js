@@ -4,17 +4,19 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "45eb8005de302ac032d7bc5a2d4bd85a",
-"assets/AssetManifest.json": "366421a774ca69a26c2fa42258702215",
+"assets/AssetManifest.json": "5709815116e8245e2da9e083044b1eec",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/assets/hamburg_raeumt_auf.png": "1688c6b4806dc81ea7afd069d10c26f4",
+"assets/assets/Elektroschrott_animaflora_Fotolia.jpg": "a99a82d81f336fe3920cba68edbbe4a8",
 "assets/assets/test-image.jpg": "09e2c96b4048d68815070c49ad3f070f",
 "assets/assets/flohmarkt_eidelstedt.jpg": "863f5c761c2600a3d26039dec21eab57",
 "assets/assets/abfallsortierung.jpg": "8f4d1dbc31d85247bb022b4a907cfa76",
 "assets/assets/batteries.webp": "6e5b1f5198a57f49db490c7c0ddce3a4",
+"assets/assets/Eimer%2520Pinsel%2520renovieren%2520streichen%2520Farbe%2520Eimer%2520paint-933395%2520tookapic%2520CC0%2520pixabay%2520GemRed.jpg": "492831f91ef01b35da32f4c55d72e938",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
 "assets/NOTICES": "494d404795d653c21df7ea09db8ec9d0",
-"main.dart.js": "b55d69ee50e263ce78ca5c6ae7249156",
+"main.dart.js": "2900bda7c09cd0588a422290b611c33a",
 "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
@@ -26,8 +28,8 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/canvaskit.wasm": "3de12d898ec208a5f31362cc00f09b9e",
-"index.html": "5f205562cfe0e9c0abad2ef7cbe824f6",
-"/": "5f205562cfe0e9c0abad2ef7cbe824f6"
+"index.html": "5ac6bde7f91a978308f95382bb6e47bf",
+"/": "5ac6bde7f91a978308f95382bb6e47bf"
 };
 
 // The application shell files that are downloaded before a service worker can
