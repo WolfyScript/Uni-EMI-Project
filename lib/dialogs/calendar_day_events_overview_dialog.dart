@@ -35,10 +35,8 @@ class _DayEventsOverviewDialog extends State<DayEventsOverviewDialog> {
               child: Text("Keine Termine!"),
             ),
           )
-        : Wrap(
-      direction: Axis.vertical,
-      runAlignment: WrapAlignment.start,
-      alignment: WrapAlignment.start,
+        : ListView(
+       shrinkWrap: true,
             children: [
               ...dayEvents.map((e) => buildChip(e.type, context)),
             ],
@@ -49,7 +47,7 @@ class _DayEventsOverviewDialog extends State<DayEventsOverviewDialog> {
       insetPadding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        constraints: const BoxConstraints(maxHeight: 460),
+        constraints: const BoxConstraints(maxHeight: 460, maxWidth: 360),
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -82,17 +80,27 @@ class _DayEventsOverviewDialog extends State<DayEventsOverviewDialog> {
             Center(
               child: OutlinedButton(
                   onPressed: () {
-                    showDialog(context: context, barrierColor: const Color(0x00000000), builder: (context) {
-                      return AddEventDialog(selectedDay: selectedDay, notify: () {
-                        setState(() {});
-                        notify.call();
-                      },);
-                    },);
+                    showDialog(
+                      context: context,
+                      barrierColor: const Color(0x00000000),
+                      builder: (context) {
+                        return AddEventDialog(
+                          selectedDay: selectedDay,
+                          notify: () {
+                            setState(() {});
+                            notify.call();
+                          },
+                        );
+                      },
+                    );
                   },
-                  child: const Text("Termin Hinzufügen")),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("Termin Hinzufügen"),
+                  )),
             ),
             const SizedBox(
-              height: 4,
+              height: 16,
             ),
             Center(
               child: ElevatedButton(
@@ -100,7 +108,10 @@ class _DayEventsOverviewDialog extends State<DayEventsOverviewDialog> {
                     Navigator.of(context).pop();
                     notify.call();
                   },
-                  child: const Text("Zurück")),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("Zurück"),
+                  )),
             ),
           ],
         ),
@@ -109,26 +120,30 @@ class _DayEventsOverviewDialog extends State<DayEventsOverviewDialog> {
   }
 
   Widget buildChip(EventType eventType, BuildContext context) {
-    return Chip(
-      padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
-      label: Text(
-        eventType.label,
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
-      iconTheme: const IconThemeData(size: 18, color: Color(0xffD9D9D9)),
-      visualDensity: VisualDensity.comfortable,
-      backgroundColor: const Color(0xffD9D9D9),
-      avatar: Container(
-        decoration:
-            BoxDecoration(color: eventType.color, shape: BoxShape.circle),
-      ),
-      onDeleted: () {
-        setState(() {
-          events.update(selectedDay, (value) {
-            return value..removeWhere((element) => element.type == eventType);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Chip(
+        padding: const EdgeInsets.only(top: 2, right: 4, bottom: 2),
+        label: Text(
+          eventType.label,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        iconTheme: const IconThemeData(size: 18, color: Color(0xffD9D9D9)),
+        visualDensity: VisualDensity.comfortable,
+        backgroundColor: const Color(0xffD9D9D9),
+        avatar: Container(
+          decoration:
+              BoxDecoration(color: eventType.color, shape: BoxShape.circle),
+        ),
+        deleteButtonTooltipMessage: "Löschen",
+        onDeleted: () {
+          setState(() {
+            events.update(selectedDay, (value) {
+              return value..removeWhere((element) => element.type == eventType);
+            });
           });
-        });
-      },
+        },
+      ),
     );
   }
 }
