@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:uni_emi_muell_guard/dialogs/add_event_type_dialog.dart';
+import 'package:uni_emi_muell_guard/dialogs/calendar_day_events_overview_dialog.dart';
 import 'package:uni_emi_muell_guard/dummy_data.dart';
 import 'package:uni_emi_muell_guard/event.dart';
 import 'package:uni_emi_muell_guard/navbar/nav_sidebar.dart';
@@ -66,7 +67,7 @@ class CalendarState extends State<CalendarPage> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return AddEventDialog(
+                      return DayEventsOverviewDialog(
                           selectedDay: selectedDay,
                           notify: () {
                             setState(() {});

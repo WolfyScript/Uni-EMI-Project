@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:uni_emi_muell_guard/dummy_data.dart';
 
 class EventType {
   final String label;
@@ -61,6 +62,9 @@ void registerEventTypes() {
 
 void removeEventType(EventType? type) {
   eventTypes.remove(type?.id);
+  events.updateAll((key, value) {
+    return value..removeWhere((element) => element.type == type);
+  });
 }
 
 EventType? getEventType(String id) {

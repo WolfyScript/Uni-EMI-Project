@@ -33,76 +33,75 @@ class _AddEventDialogState extends State<AddEventDialog> {
       backgroundColor: Colors.white,
       insetPadding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          constraints: const BoxConstraints.expand(width: 300, height: 400),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Termin Hinzufügen",
-                style: TextStyle(
-                    color: MaterialColor(
-                        Theme.of(context).primaryColor.value, const {}),
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text("Datum: ${DateFormat('dd. MMMM yyyy','de_DE').format(selectedDay)}"),
-              const SizedBox(height: 16,),
-              Expanded(
-                flex: 1,
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      ...eventTypes.values
-                          .map((e) => buildChip(e, context))
-                          .toList()
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        constraints: const BoxConstraints(maxHeight: 460),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Termin Hinzufügen",
+              style: TextStyle(
+                  color: MaterialColor(
+                      Theme.of(context).primaryColor.value, const {}),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Text("Datum: ${DateFormat('dd. MMMM yyyy','de_DE').format(selectedDay)}"),
+            const SizedBox(height: 16,),
+            Expanded(
+              flex: 1,
+              child: SingleChildScrollView(
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  alignment: WrapAlignment.spaceAround,
+                  children: [
+                    ...eventTypes.values
+                        .map((e) => buildChip(e, context))
+                        .toList()
 
-                    ],
-                  ),
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text("Abbrechen")),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (selectedType == null) {
-                          return;
-                        }
-                        setState(() {
-                          events.update(selectedDay, (value) {
-                              return value..add(Event(selectedType!.id));
-                          }, ifAbsent: () {
-                            return [Event(selectedType!.id)];
-                          },);
-                        });
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OutlinedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("Abbrechen")),
+                ElevatedButton(
+                    onPressed: () {
+                      if (selectedType == null) {
+                        return;
+                      }
+                      setState(() {
+                        events.update(selectedDay, (value) {
+                            return value..add(Event(selectedType!.id));
+                        }, ifAbsent: () {
+                          return [Event(selectedType!.id)];
+                        },);
+                      });
 
-                        Navigator.of(context).pop();
-                        notify.call();
-                      },
-                      child: const Text("Hinzufügen"))
-                ],
-              )
-            ],
-          ),
+                      Navigator.of(context).pop();
+                      notify.call();
+                    },
+                    child: const Text("Hinzufügen"))
+              ],
+            )
+          ],
         ),
       ),
     );
